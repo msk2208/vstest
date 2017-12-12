@@ -280,6 +280,10 @@ namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities
                 try
                 {
                     var rawMessage = this.TryReceiveRawMessage();
+					if (EqtTrace.IsVerboseEnabled)
+                    {
+                        EqtTrace.Verbose("Received message: {0}", rawMessage);
+                    }
 
                     // Send raw message first to unblock handlers waiting to send message to IDEs
                     testRunEventsHandler.HandleRawMessage(rawMessage);

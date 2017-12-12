@@ -165,6 +165,12 @@ namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.DataCollect
             do
             {
                 var message = this.communicationManager.ReceiveMessage();
+
+                if (EqtTrace.IsVerboseEnabled)
+                {
+                    EqtTrace.Verbose("DataCollectionRequestHandler.ProcessRequests : Datacollector received message: {0}", message);
+                }
+
                 switch (message.MessageType)
                 {
                     case MessageType.BeforeTestRunStart:
@@ -215,7 +221,7 @@ namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.DataCollect
                                             {
                                                 EqtTrace.Error(
                                                     "DataCollectionRequestHandler.ProcessRequests : Error occured during initialization of TestHost : {0}",
-                                                    e.Message);
+                                                    e);
                                             }
                                         }
                                     },
@@ -254,7 +260,7 @@ namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.DataCollect
                         {
                             if (EqtTrace.IsErrorEnabled)
                             {
-                                EqtTrace.Error("DataCollectionRequestHandler.ProcessRequests : {0}", ex.Message);
+                                EqtTrace.Error("DataCollectionRequestHandler.ProcessRequests : {0}", ex.ToString());
                             }
                         }
 
