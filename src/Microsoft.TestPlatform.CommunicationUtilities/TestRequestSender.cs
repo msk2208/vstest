@@ -280,7 +280,7 @@ namespace Microsoft.VisualStudio.TestPlatform.CommunicationUtilities
                 try
                 {
                     var rawMessage = this.TryReceiveRawMessage();
-					if (EqtTrace.IsVerboseEnabled)
+                    if (EqtTrace.IsVerboseEnabled)
                     {
                         EqtTrace.Verbose("Received message: {0}", rawMessage);
                     }
